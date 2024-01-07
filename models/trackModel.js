@@ -1,6 +1,6 @@
 const DataTypes = require('sequelize');
 const sequelize = require('../db/connection');
-const User = require('./user'); // Asegúrate de importar el modelo User si no lo has hecho
+const User = require('./userModel'); // Asegúrate de importar el modelo User si no lo has hecho
 
 const Route = sequelize.define('TBL_ROUTE', {
     ID_ROUTE: {

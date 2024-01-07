@@ -6,6 +6,7 @@ const app = express();
 //rutas
 
 const userRoutes = require('./routes/userRoute');
+const trackRoutes = require('./routes/trackRoute');
 
 //middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -19,6 +20,7 @@ app.use(cors({
     allowedHeaders: ['Authorization', 'X-API-KEY', 'Origin', 'X-Requested-With', 'Content-Type', 'Accept', 'Access-Control-Allow-Request-Method'],
   }));
   app.use('/api', userRoutes);
+  app.use('/routes', trackRoutes);
 
 //Exportar
   module.exports = app;

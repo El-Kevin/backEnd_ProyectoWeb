@@ -1,5 +1,6 @@
-const User = require ('../models/userModel');
+const Track = require ('../models/trackModel');
 const controller = {
+
     newRoute: async function(req, res) {
         try {
           const { id_user, name_route, begin_route, end_route } = req.body;
@@ -23,6 +24,17 @@ const controller = {
           return res.status(500).send({ error: 'Error al crear la ruta' });
         }
       },
+
+    getAllRoutes: async (req, res) => {
+        try {
+            const routes = await Track.findAll();
+            res.status(200).json(routes);
+        } catch (error) {
+            console.error('Error al obtener las rutas:', error);
+            res.status(500).json({ error: 'Error interno del servidor' });
+        }
+    }
+
   
 
 }
