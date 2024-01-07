@@ -1,9 +1,10 @@
 
-//const User = require ('../models/userModel');
+const User = require ('../models/userModel');
 const controller = {
     
     loginUser: async function(req, res) {
-        return res.status(200).send({msg: "valio"})
+      const users = await User.findAll();
+      return res.status(200).send({ users });
      }
 
 }

@@ -1,26 +1,29 @@
-/*const DataTypes  = require('sequelize');
-
+const DataTypes  = require('sequelize');
 const sequelize = require('../db/connection');
-const User = sequelize.define('user_table', {
-    id: {
+const User = sequelize.define('TBL_USER', {
+    ID_USER: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-    },
-    name: {
+    },  
+    USERNAME: {
       type: DataTypes.STRING,
       unique: true,
       allowNull: false
     },
-    password: {
+    PASSWORD: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    CARRERA: {
       type: DataTypes.STRING,
       allowNull: false
     }
   }, {
-    tableName: 'user_table', // Especifica el nombre de la tabla aquí
+    tableName: 'TBL_USER', // Especifica el nombre de la tabla aquí
     timestamps: false // Evita la creación automática de createdAt y updatedAt
   });
   
   // Exportar el modelo
   module.exports = User;
-  */
+  
