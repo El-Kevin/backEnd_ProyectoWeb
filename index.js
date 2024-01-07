@@ -3,8 +3,8 @@ const app = require('./app');
 const port = 3700;
 
 const config = {
-  user: 'sa',
-  password: 'Lluvia27@',
+  user: 'usr_usuario',
+  password: 'usr_usuario',
   server: 'localhost',
   database: 'BDD_Proyecto',
   options: {
