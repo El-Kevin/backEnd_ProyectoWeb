@@ -15,7 +15,11 @@ const User = sequelize.define('TBL_USER', {
       type: DataTypes.STRING,
       allowNull: false
     },
-    CARRERA: {
+    TOKEN_USER: {
+      type: DataTypes.STRING,
+      allowNull: true
+    },
+    ROL: {
       type: DataTypes.STRING,
       allowNull: false
     }

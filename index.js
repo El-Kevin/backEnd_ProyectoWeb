@@ -6,7 +6,7 @@ const config = {
   user: 'sa',
   password: 'Lluvia27@',
   server: 'localhost',
-  database: 'BDD_PASANTIAS',
+  database: 'BDD_Proyecto',
   options: {
     //encrypt: true, // Dependiendo de tu configuración de SQL Server
     encrypt: true,
