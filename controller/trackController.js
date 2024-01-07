@@ -1,4 +1,5 @@
 const Track = require ('../models/trackModel');
+
 const controller = {
 
     newRoute: async function(req, res) {
@@ -6,7 +7,7 @@ const controller = {
           const { id_user, name_route, begin_route, end_route } = req.body;
           
           // Crear la nueva ruta
-          const newRoute = await Route.create({
+          const newRoute = await Track.create({
             ID_USER: id_user,
             NAME_ROUTE: name_route,
             BEGIN_ROUTE: begin_route,
