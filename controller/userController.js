@@ -4,14 +4,15 @@ const User = require ('../models/userModel');
 const controller = {
   newUser: async function(req, res) {
     try {
-      const { username, password, rol } = req.body;
+      const { username, password, rol, email } = req.body;
       const hashedPassword = await bcrypt.hash(password, 10);
       
       // Crear el usuario
       const newUser = await User.create({
         USERNAME: username,
         PASSWORD: hashedPassword,
-        ROL: rol
+        ROL: rol,
+        email_name: email
       });
       
   

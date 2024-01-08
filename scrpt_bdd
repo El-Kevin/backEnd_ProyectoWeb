@@ -46,9 +46,11 @@ create table TBL_USER (
    PASSWORD             nvarchar(max)          not null,
    TOKEN_USER           nvarchar(max)          null,
    ROL                  nvarchar(max)          not null,
+   email_name           nvarchar(max)           null
    constraint PK_TBL_USER primary key nonclustered (ID_USER)
 )
 go
+
 
 create table TBL_ROUTE (
    ID_ROUTE             int identity(1,1)     not null,
@@ -89,14 +91,8 @@ CREATE TABLE TBL_USER_ROUTE (
 )
 go
 
-ALTER TABLE TBL_ROUTE
-ADD ROUTE_DATE_TIME datetime null
 
-DBCC useroptions;
-
-SELECT GETDATE()
 
 insert into TBL_ROUTE VALUES
    (1, 'Ruta A', 'Inicio A', 'Fin A', '2024-01-07')
 
-DROP TABLE TBL_ROUTE

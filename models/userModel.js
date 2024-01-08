@@ -22,6 +22,10 @@ const User = sequelize.define('TBL_USER', {
     ROL: {
       type: DataTypes.STRING,
       allowNull: false
+    },
+    email_name:{
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {
     tableName: 'TBL_USER', // Especifica el nombre de la tabla aquí
