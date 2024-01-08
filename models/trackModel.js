@@ -28,6 +28,10 @@ const Route = sequelize.define('TBL_ROUTE', {
     END_ROUTE: {
         type: DataTypes.STRING,
         allowNull: false
+    },
+    DATE_ROUTE: {
+        type: DataTypes.STRING,
+        allowNull: true // Puedes cambiar esto según tus requisitos
     }
 }, {
     tableName: 'TBL_ROUTE', // Especifica el nombre de la tabla aquí

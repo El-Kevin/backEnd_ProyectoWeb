@@ -4,14 +4,15 @@ const controller = {
 
     newRoute: async function(req, res) {
         try {
-          const { id_user, name_route, begin_route, end_route } = req.body;
+          const { id_user, name_route, begin_route, end_route, route_date} = req.body;
           
           // Crear la nueva ruta
           const newRoute = await Track.create({
             ID_USER: id_user,
             NAME_ROUTE: name_route,
             BEGIN_ROUTE: begin_route,
-            END_ROUTE: end_route
+            END_ROUTE: end_route,
+            DATE_ROUTE: route_date
           });
           
           // Enviar respuesta con la ruta creada
@@ -53,10 +54,32 @@ const controller = {
             console.error('Error al eliminar la ruta:', error);
             res.status(500).send({ error: 'Error interno del servidor' });
         }
+    },
+
+    updateRoute: async (req, res) => {
+        const routeId = req.params.id;
+        const updatedData = req.body;
+
+        if (!routeId) {
+            return res.status(400).send({ error: 'Se debe proporcionar un ID de ruta para actualizar.' });
+        }
+
+        try {
+            const [updatedCount, updatedRoutes] = await Track.update(updatedData, {
+                where: { ID_ROUTE: routeId },
+                returning: true, // Devuelve los registros actualizados
+            });
+
+            if (updatedCount > 0) {
+                res.status(200).send({ updatedRoutes });
+            } else {
+                res.status(404).send({ error: 'Ruta no encontrada' });
+            }
+        } catch (error) {
+            console.error('Error al actualizar la ruta:', error);
+            res.status(500).send({ error: 'Error interno del servidor' });
+        }
     }
-
-  
-
 }
 
 module.exports = controller;
