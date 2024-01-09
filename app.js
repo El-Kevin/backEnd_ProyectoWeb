@@ -1,7 +1,26 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors'); // Importa el paquete CORS
+const http = require('http');
+const WebSocket = require('ws');
+
 const app = express();
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
+
+wss.on('connection', (ws) => {
+  console.log('Un cliente se ha conectado');
+
+  ws.on('message', (message) => {
+    console.log(message);
+    wss.clients.forEach((client) => {
+      if (client !== ws && client.readyState === WebSocket.OPEN) {
+        client.send(message);
+      }
+    });
+  });
+})
+
 
 //rutas
 
@@ -23,4 +42,4 @@ app.use(cors({
   app.use('/routes', trackRoutes);
 
 //Exportar
-  module.exports = app;
+  module.exports = {app, server};

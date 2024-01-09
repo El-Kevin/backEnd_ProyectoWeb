@@ -1,5 +1,5 @@
 const { ConnectionPool } = require('mssql');
-const app = require('./app');
+const {app, server} = require('./app');
 const port = 3700;
 
 const config = {
@@ -20,7 +20,7 @@ const pool = new ConnectionPool(config);
 pool.connect()
   .then(() => {
     console.log('Conexión exitosa a SQL Server');
-    app.listen(port, () => {
+    server.listen(port, () => {
       console.log('Servidor corriendo correctamente en la url: localhost:', port);
     });
   })
